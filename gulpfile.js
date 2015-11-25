@@ -1,9 +1,10 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
 var jade = require('gulp-jade');
-var plumber = require('gulp-plumber');
+var sass = require('gulp-sass');
+var coffee = require('gulp-coffee');
 
+var concat = require('gulp-concat');
+var plumber = require('gulp-plumber');
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 
@@ -43,13 +44,26 @@ gulp.task('sass', function() {
 	.pipe(gulp.dest('./public/css')); // deposit
 });
 
+/* JS */
+gulp.task('coffee', function() {
+	return gulp.src([
+		'./src/coffee/**/*.coffee'
+	])
+	.pipe(plumber())
+	.pipe(coffee({
+		bare: true
+	})) // TODO: add an "on('error', ...)"
+	.pipe(gulp.dest('./public/js'));
+});
+
 /* BUILD */
-gulp.task('build', ['jade', 'sass']);
+gulp.task('build', ['jade', 'sass', 'coffee']);
 
 /* SERVE */
 gulp.task('serve', ['build', 'browser-sync'], function() {
 	gulp.watch('./src/sass/**/*.scss', ['sass', reload]); //every time something changes in a, run b
 	gulp.watch('./src/**/*.jade', ['jade', reload]);
+	gulp.watch('./src/coffee/**/*.coffee', ['coffee', reload]);
 });
 
 gulp.task('default', ['serve']);
