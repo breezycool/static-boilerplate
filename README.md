@@ -7,7 +7,6 @@ This is a boilerplate I wrote because I couldn't wrap my head around all the com
 - Foundation/Sass
 - CoffeeScript
 - Gulp
-
 - BrowserSync (for auto-refresh and stats)
 
 # Install
@@ -16,3 +15,6 @@ This is a boilerplate I wrote because I couldn't wrap my head around all the com
 
 # Run
 `gulp`, or `gulp serve`
+
+# Adding Libraries
+I've added jQuery and bounce.js to demonstrate how to add libraries. Just download the library using `bower install`, and then add the path to the list in the libraries task in gulpfile.js

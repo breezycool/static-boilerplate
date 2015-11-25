@@ -3,6 +3,7 @@ var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
 
+var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var browserSync = require('browser-sync').create();
@@ -19,7 +20,7 @@ gulp.task('browser-sync', function() {
 
 /* HTML */
 gulp.task('jade', function() {
-	return gulp.src([
+	gulp.src([
 		'./src/**/*.jade'
 	])
 	.pipe(plumber())
@@ -31,7 +32,7 @@ gulp.task('jade', function() {
 
 /* CSS */
 gulp.task('sass', function() {
-	return gulp.src([
+	gulp.src([
 		'./src/sass/app.scss' //pull files from src
 	])
 	.pipe(plumber())
@@ -44,9 +45,9 @@ gulp.task('sass', function() {
 	.pipe(gulp.dest('./public/css')); // deposit
 });
 
-/* JS */
+/* COFFEE */
 gulp.task('coffee', function() {
-	return gulp.src([
+	gulp.src([
 		'./src/coffee/**/*.coffee'
 	])
 	.pipe(plumber())
@@ -56,8 +57,19 @@ gulp.task('coffee', function() {
 	.pipe(gulp.dest('./public/js'));
 });
 
+/* JS Libraries */
+gulp.task('libraries', function() {
+	gulp.src([
+		// two example libraries, but add those you need
+		'./bower_components/jquery/dist/jquery.min.js',
+		'./bower_components/bounce.js/bounce.min.js'
+	])
+	.pipe(concat('libraries.js'))
+	.pipe(gulp.dest('./public/js'));
+});
+
 /* BUILD */
-gulp.task('build', ['jade', 'sass', 'coffee']);
+gulp.task('build', ['jade', 'sass', 'libraries', 'coffee']);
 
 /* SERVE */
 gulp.task('serve', ['build', 'browser-sync'], function() {

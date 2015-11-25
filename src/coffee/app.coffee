@@ -1,4 +1,3 @@
-start = () ->
-	console.log "javascript connected"
-
-window.onload = start
+$ ->
+	$(".narrative").click ->
+		alert "clicked"

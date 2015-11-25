@@ -1,6 +1,29 @@
 @import 'foundation/settings';
 @import 'foundation';
 
-body {
-	padding: 40px;
+.row {
+	padding-top: 10px;
+	max-width: 90%;
+	min-height: 20px;
+}
+
+h1 {
+	color: lighten($primary-color, 20%);
+}
+
+.narrative {
+	padding: 10px;
+	max-width: 10%;
+	border-radius: 2em;
+	text-align: center;
+	&:hover {
+		background-color: lighten($primary-color, 20%);
+		cursor: pointer;
+
+		-webkit-transition: background-color 1000ms linear;
+		-moz-transition: background-color 1000ms linear;
+		-o-transition: background-color 1000ms linear;
+		-ms-transition: background-color 1000ms linear;
+		transition: background-color 1000ms linear;
+	}
 }

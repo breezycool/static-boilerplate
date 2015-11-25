@@ -1,7 +1,11 @@
 html
-  head
-    link(rel="stylesheet", href="css/app.css")
-    script(src="js/app.js")
-  body
-    h1 This is my site
-    a.button Welcome to my super lame site.
+	head
+		link(rel="stylesheet", href="css/app.css")
+		//- script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+		script(src="js/libraries.js")
+		script(src="js/app.js")
+	body
+		div.row
+			each val in [1,2,3,4,5,6,7]
+				div.row
+					div.narrative Jimmy Wong
