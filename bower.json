@@ -1,0 +1,21 @@
+{
+  "name": "narratives",
+  "authors": [
+    "breezycool <lachlankermode@live.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "foundation": "~5.5.3"
+  }
+}
